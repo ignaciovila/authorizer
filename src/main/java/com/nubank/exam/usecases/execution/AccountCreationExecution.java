@@ -1,9 +1,9 @@
 package com.nubank.exam.usecases.execution;
 
+import com.nubank.exam.domain.Account;
 import com.nubank.exam.domain.input.AccountCreation;
 import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.output.AccountStatus;
-import com.nubank.exam.domain.input.Account;
 import com.nubank.exam.usecases.AccountManager;
 import com.nubank.exam.usecases.exceptions.AccountAlreadyInitializedException;
 import java.util.ArrayList;

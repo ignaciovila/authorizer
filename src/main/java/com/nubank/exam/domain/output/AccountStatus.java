@@ -1,7 +1,7 @@
 package com.nubank.exam.domain.output;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nubank.exam.domain.input.Account;
+import com.nubank.exam.domain.Account;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;

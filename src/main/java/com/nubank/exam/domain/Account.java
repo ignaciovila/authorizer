@@ -1,4 +1,4 @@
-package com.nubank.exam.domain.input;
+package com.nubank.exam.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
