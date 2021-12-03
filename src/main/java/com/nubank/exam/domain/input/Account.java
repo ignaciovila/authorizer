@@ -1,13 +1,18 @@
 package com.nubank.exam.domain.input;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class InputAccount {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Account {
     @JsonProperty("active-card")
     private Boolean activeCard;
 
     @JsonProperty("available-limit")
     private Long availableLimit;
 }
+

@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class OperationExecutor {
 
     private final Map<OperationType, OperationExecution> operationExecutionMap;
+    private final AccountManager accountManager;
 
     public OperationExecutor() {
         this.operationExecutionMap = Map.of(
@@ -22,6 +23,7 @@ public class OperationExecutor {
                 OperationType.TRANSACTION_AUTHORIZATION, new TransactionAuthorizationExecution(),
                 OperationType.INVALID_OPERATION, new InvalidOperationExecution()
         );
+        this.accountManager = new AccountManager();
     }
 
     public List<AccountStatus> execute(List<Operation> operations) {
@@ -34,7 +36,7 @@ public class OperationExecutor {
     private Optional<AccountStatus> execute(Operation operation) {
         OperationExecution execution = operationExecutionMap.getOrDefault(operation.getType(), new InvalidOperationExecution());
 
-        return execution.execute(operation);
+        return execution.execute(accountManager, operation);
     }
 
 }

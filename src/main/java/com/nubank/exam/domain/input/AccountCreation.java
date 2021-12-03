@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class AccountCreation implements Operation {
     @JsonProperty
-    private InputAccount account;
+    private Account account;
 
     @Override
     public OperationType getType() {

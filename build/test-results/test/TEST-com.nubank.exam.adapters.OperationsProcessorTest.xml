@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.nubank.exam.adapters.OperationsProcessorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-03T22:46:42" hostname="AR0FVFGD3GPQ05N" time="37.77">
+  <properties/>
+  <testcase name="accountCreationError()" classname="com.nubank.exam.adapters.OperationsProcessorTest" time="37.77"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

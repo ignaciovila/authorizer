@@ -3,8 +3,9 @@ package com.nubank.exam.usecases.execution;
 import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.input.TransactionAuthorization;
 import com.nubank.exam.domain.output.AccountStatus;
-import com.nubank.exam.domain.output.OutputAccount;
+import com.nubank.exam.domain.input.Account;
 import com.nubank.exam.usecases.AccountManager;
+import com.nubank.exam.usecases.exceptions.AccountNotInitializedException;
 import com.nubank.exam.usecases.exceptions.CardNotActiveException;
 import com.nubank.exam.usecases.exceptions.InsufficientLimitException;
 import java.util.ArrayList;
@@ -13,26 +14,20 @@ import java.util.Optional;
 
 public class TransactionAuthorizationExecution implements OperationExecution {
     @Override
-    public Optional<AccountStatus> execute(Operation operation) {
+    public Optional<AccountStatus> execute(AccountManager accountManager, Operation operation) {
         TransactionAuthorization transactionAuthorization = (TransactionAuthorization) operation;
-        AccountManager accountManager = AccountManager.getInstance();
         List<String> violations = new ArrayList<>();
 
         try {
             accountManager.authorize(transactionAuthorization);
-        } catch (InsufficientLimitException|CardNotActiveException e) {
+        } catch (InsufficientLimitException | CardNotActiveException | AccountNotInitializedException e) {
             violations.add(e.getMessage());
         }
 
-        OutputAccount outputAccount = OutputAccount.builder()
-                .activeCard(accountManager.getActiveCard())
-                .availableLimit(accountManager.getAvailableLimit())
-                .violations(violations)
-                .build();
+        Account account = new Account(accountManager.getActiveCard(),
+                accountManager.getAvailableLimit());
 
-        AccountStatus accountStatus = AccountStatus.builder()
-                .account(outputAccount)
-                .build();
+        AccountStatus accountStatus = new AccountStatus(account, violations);
 
         return Optional.of(accountStatus);
     }
