@@ -6,6 +6,7 @@ import com.nubank.exam.usecases.AccountManager;
 import java.util.Optional;
 
 public class InvalidOperationExecution implements OperationExecution {
+
     @Override
     public Optional<AccountStatus> execute(AccountManager accountManager, Operation operation) {
         return Optional.empty();

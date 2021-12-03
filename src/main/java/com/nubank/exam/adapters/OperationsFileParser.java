@@ -10,13 +10,8 @@ import java.util.stream.Collectors;
 
 public class OperationsFileParser {
 
-    private final List<String> operations;
-    private final OperationMapper operationMapper;
-
-    public OperationsFileParser() {
-        operations = new ArrayList<>();
-        operationMapper = new OperationMapper();
-    }
+    private final List<String> operations = new ArrayList<>();
+    private final OperationMapper operationMapper = new OperationMapper();
 
     public List<Operation> parse(String fileName) throws FileNotFoundException {
         File file = new File(fileName);

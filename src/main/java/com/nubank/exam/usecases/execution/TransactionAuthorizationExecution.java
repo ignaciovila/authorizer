@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class TransactionAuthorizationExecution implements OperationExecution {
+
     @Override
     public Optional<AccountStatus> execute(AccountManager accountManager, Operation operation) {
         TransactionAuthorization transactionAuthorization = (TransactionAuthorization) operation;

@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nubank.exam.domain.output.AccountStatus;
 
 public class AccountStatusMapper {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     public String map(AccountStatus accountStatus) {
-        ObjectMapper objectMapper = new ObjectMapper();
         String output = "";
 
         try {

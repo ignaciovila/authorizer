@@ -4,8 +4,10 @@ import com.nubank.exam.domain.output.AccountStatus;
 import java.util.List;
 
 public class AccountStatusPresenter {
+
+    private final AccountStatusMapper mapper = new AccountStatusMapper();
+
     public void present(List<AccountStatus> output) {
-        AccountStatusMapper mapper = new AccountStatusMapper();
         output.stream()
                 .map(mapper::map)
                 .forEach(System.out::println);

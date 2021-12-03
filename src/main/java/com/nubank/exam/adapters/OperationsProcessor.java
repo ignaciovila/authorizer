@@ -7,9 +7,13 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class OperationsProcessor {
-    public List<AccountStatus> process(String fileName) throws FileNotFoundException {
-        List<Operation> operations = new OperationsFileParser().parse(fileName);
 
-        return new OperationExecutor().execute(operations);
+    private final OperationsFileParser operationsFileParser = new OperationsFileParser();
+    private final OperationExecutor operationExecutor = new OperationExecutor();
+
+    public List<AccountStatus> process(String fileName) throws FileNotFoundException {
+        List<Operation> operations = operationsFileParser.parse(fileName);
+
+        return operationExecutor.execute(operations);
     }
 }

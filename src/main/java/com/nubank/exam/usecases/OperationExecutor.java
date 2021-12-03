@@ -14,17 +14,12 @@ import java.util.stream.Collectors;
 
 public class OperationExecutor {
 
-    private final Map<OperationType, OperationExecution> operationExecutionMap;
-    private final AccountManager accountManager;
-
-    public OperationExecutor() {
-        this.operationExecutionMap = Map.of(
-                OperationType.ACCOUNT_CREATION, new AccountCreationExecution(),
-                OperationType.TRANSACTION_AUTHORIZATION, new TransactionAuthorizationExecution(),
-                OperationType.INVALID_OPERATION, new InvalidOperationExecution()
-        );
-        this.accountManager = new AccountManager();
-    }
+    private final AccountManager accountManager = new AccountManager();
+    private final Map<OperationType, OperationExecution> operationExecutionMap = Map.of(
+            OperationType.ACCOUNT_CREATION, new AccountCreationExecution(),
+            OperationType.TRANSACTION_AUTHORIZATION, new TransactionAuthorizationExecution(),
+            OperationType.INVALID_OPERATION, new InvalidOperationExecution()
+    );
 
     public List<AccountStatus> execute(List<Operation> operations) {
         return operations.stream()

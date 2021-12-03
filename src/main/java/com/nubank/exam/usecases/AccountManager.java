@@ -11,8 +11,6 @@ import lombok.Getter;
 @Getter
 public class AccountManager {
 
-    private static final AccountManager instance = new AccountManager();
-
     private Boolean activeCard;
     private Long availableLimit;
 

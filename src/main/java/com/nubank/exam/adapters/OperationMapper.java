@@ -8,18 +8,20 @@ import com.nubank.exam.domain.input.TransactionAuthorization;
 
 public class OperationMapper {
 
-    private Exception accountCreationMappingException;
-    private Exception transactionAuthorizationMappingException;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public Operation map(String operation) {
+        Exception accountCreationMappingException;
+        Exception transactionAuthorizationMappingException;
+
         try {
-            return new ObjectMapper().readValue(operation, AccountCreation.class);
+            return objectMapper.readValue(operation, AccountCreation.class);
         } catch (Exception exception) {
             accountCreationMappingException = exception;
         }
 
         try {
-            return new ObjectMapper().readValue(operation, TransactionAuthorization.class);
+            return objectMapper.readValue(operation, TransactionAuthorization.class);
         } catch (Exception exception) {
             transactionAuthorizationMappingException = exception;
         }
