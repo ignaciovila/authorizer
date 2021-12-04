@@ -1,10 +1,10 @@
-package com.nubank.exam.usecases.validators.transactions;
+package com.nubank.exam.usecases.validators.transactions.util;
 
 import com.nubank.exam.domain.input.Transaction;
 import java.util.Calendar;
 import java.util.List;
 
-public abstract class DateValidator {
+public class ValidatorDateUtil {
     public void filterLastTwoMinutesTransactions(Transaction transaction, List<Transaction> transactionHistory) {
         // remove date if it's before the past two minutes
         Calendar calendar = Calendar.getInstance();
