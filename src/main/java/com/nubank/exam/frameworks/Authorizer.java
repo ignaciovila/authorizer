@@ -6,11 +6,15 @@ import com.nubank.exam.domain.output.AccountStatus;
 import java.util.List;
 
 public class Authorizer {
+
+    private final OperationsProcessor operationsProcessor = new OperationsProcessor();
+    private final AccountStatusPresenter accountStatusPresenter = new AccountStatusPresenter();
+
     public void run(String[] args) {
         String fileName = args[0];
 
-        List<AccountStatus> output = new OperationsProcessor().process(fileName);
+        List<AccountStatus> output = operationsProcessor.process(fileName);
 
-        new AccountStatusPresenter().present(output);
+        accountStatusPresenter.present(output);
     }
 }
