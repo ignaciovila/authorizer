@@ -9,11 +9,12 @@ public class AccountStatusMapper {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public String map(AccountStatus accountStatus) {
-        String output = "";
+        String output;
 
         try {
             output = objectMapper.writeValueAsString(accountStatus);
-        } catch (JsonProcessingException ignored) {
+        } catch (JsonProcessingException exception) {
+            throw new RuntimeException(exception);
         }
 
         return output;
