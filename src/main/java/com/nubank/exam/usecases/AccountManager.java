@@ -4,8 +4,9 @@ import com.nubank.exam.domain.Account;
 import com.nubank.exam.domain.AccountState;
 import com.nubank.exam.domain.input.AccountCreation;
 import com.nubank.exam.domain.input.TransactionAuthorization;
-import com.nubank.exam.usecases.validators.AccountAlreadyInitializedValidator;
+import com.nubank.exam.usecases.validators.AccountCreationValidator;
 import com.nubank.exam.usecases.validators.TransactionAuthorizationValidator;
+import com.nubank.exam.usecases.validators.account.AccountAlreadyInitializedValidator;
 import java.util.List;
 import lombok.Getter;
 
@@ -16,7 +17,13 @@ public class AccountManager {
     private final AccountState accountState = new AccountState();
 
     public Account createAccount(AccountCreation accountCreation, List<String> violations) {
-        accountAlreadyInitializedValidator.validate(violations, accountState.getActiveCard(), accountState.getAvailableLimit());
+        AccountCreationValidator validator = AccountCreationValidator.builder()
+                        .violations(violations)
+                        .activeCard(accountState.getActiveCard())
+                        .availableLimit(accountState.getAvailableLimit())
+                        .build();
+
+        validator.validate();
 
         if (violations.isEmpty()) {
             accountState.setActiveCard(accountCreation.getAccount().getActiveCard());

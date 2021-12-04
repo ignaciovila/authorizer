@@ -1,4 +1,4 @@
-package com.nubank.exam.usecases.validators;
+package com.nubank.exam.usecases.validators.transactions;
 
 import com.nubank.exam.domain.input.Transaction;
 import java.util.List;
