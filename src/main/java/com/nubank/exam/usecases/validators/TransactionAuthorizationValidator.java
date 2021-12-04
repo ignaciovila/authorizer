@@ -1,6 +1,7 @@
 package com.nubank.exam.usecases.validators;
 
 import com.nubank.exam.domain.AccountState;
+import com.nubank.exam.domain.Violations;
 import com.nubank.exam.domain.input.Transaction;
 import com.nubank.exam.usecases.validators.transactions.AccountNotInitializedValidator;
 import com.nubank.exam.usecases.validators.transactions.CardNotActiveValidator;
@@ -13,7 +14,7 @@ import lombok.Builder;
 @Builder
 public class TransactionAuthorizationValidator {
     
-    private List<String> violations;
+    private List<Violations> violations;
     private Boolean activeCard;
     private Long availableLimit;
     private Transaction transaction;

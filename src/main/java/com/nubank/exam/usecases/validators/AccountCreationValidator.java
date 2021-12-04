@@ -1,12 +1,13 @@
 package com.nubank.exam.usecases.validators;
 
+import com.nubank.exam.domain.Violations;
 import com.nubank.exam.usecases.validators.account.AccountAlreadyInitializedValidator;
 import java.util.List;
 import lombok.Builder;
 
 @Builder
 public class AccountCreationValidator {
-    private List<String> violations;
+    private List<Violations> violations;
     private Boolean activeCard;
     private Long availableLimit;
 

@@ -2,6 +2,7 @@ package com.nubank.exam.domain.output;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nubank.exam.domain.Account;
+import com.nubank.exam.domain.Violations;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +15,5 @@ public class AccountStatus {
     @JsonProperty
     private Account account;
     @JsonProperty
-    private List<String> violations;
+    private List<Violations> violations;
 }

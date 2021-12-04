@@ -1,6 +1,7 @@
 package com.nubank.exam.usecases.execution;
 
 import com.nubank.exam.domain.Account;
+import com.nubank.exam.domain.Violations;
 import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.input.TransactionAuthorization;
 import com.nubank.exam.domain.output.AccountStatus;
@@ -14,7 +15,7 @@ public class TransactionAuthorizationExecution implements OperationExecution {
     @Override
     public Optional<AccountStatus> execute(AccountManager accountManager, Operation operation) {
         TransactionAuthorization transactionAuthorization = (TransactionAuthorization) operation;
-        List<String> violations = new ArrayList<>();
+        List<Violations> violations = new ArrayList<>();
 
         Account account = accountManager.authorizeTransaction(transactionAuthorization, violations);
 
