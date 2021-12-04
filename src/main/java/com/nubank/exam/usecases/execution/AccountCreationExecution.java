@@ -6,6 +6,7 @@ import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.usecases.AccountManager;
 import com.nubank.exam.usecases.exceptions.AccountAlreadyInitializedException;
+import com.nubank.exam.usecases.exceptions.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class AccountCreationExecution implements OperationExecution {
 
         try {
             accountManager.create(accountCreation);
-        } catch (AccountAlreadyInitializedException e) {
+        } catch (ValidationException e) {
            violations.add(e.getMessage());
         }
 

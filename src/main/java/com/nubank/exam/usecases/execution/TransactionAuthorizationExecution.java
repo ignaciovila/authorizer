@@ -8,6 +8,7 @@ import com.nubank.exam.usecases.AccountManager;
 import com.nubank.exam.usecases.exceptions.AccountNotInitializedException;
 import com.nubank.exam.usecases.exceptions.CardNotActiveException;
 import com.nubank.exam.usecases.exceptions.InsufficientLimitException;
+import com.nubank.exam.usecases.exceptions.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,12 +22,11 @@ public class TransactionAuthorizationExecution implements OperationExecution {
 
         try {
             accountManager.authorize(transactionAuthorization);
-        } catch (InsufficientLimitException | CardNotActiveException | AccountNotInitializedException e) {
+        } catch (ValidationException e) {
             violations.add(e.getMessage());
         }
 
-        Account account = new Account(accountManager.getActiveCard(),
-                accountManager.getAvailableLimit());
+        Account account = new Account(accountManager.getActiveCard(), accountManager.getAvailableLimit());
 
         AccountStatus accountStatus = new AccountStatus(account, violations);
 
