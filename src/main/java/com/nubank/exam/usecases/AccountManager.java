@@ -8,9 +8,7 @@ import com.nubank.exam.usecases.validators.AccountCreationValidator;
 import com.nubank.exam.usecases.validators.TransactionAuthorizationValidator;
 import com.nubank.exam.usecases.validators.account.AccountAlreadyInitializedValidator;
 import java.util.List;
-import lombok.Getter;
 
-@Getter
 public class AccountManager {
 
     private final AccountAlreadyInitializedValidator accountAlreadyInitializedValidator = new AccountAlreadyInitializedValidator();
