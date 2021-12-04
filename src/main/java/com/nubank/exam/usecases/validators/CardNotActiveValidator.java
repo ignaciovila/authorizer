@@ -1,13 +1,11 @@
 package com.nubank.exam.usecases.validators;
 
-import com.nubank.exam.usecases.exceptions.CardNotActiveException;
-import com.nubank.exam.usecases.exceptions.ValidationException;
+import java.util.List;
 
-public class CardNotActiveValidator implements OperationValidator {
-    @Override
-    public void validate(Boolean activeCard, Long availableLimit, Long transactionAmount) throws ValidationException {
-        if (!activeCard) {
-            throw new CardNotActiveException();
+public class CardNotActiveValidator {
+    public void validate(List<String> violations, Boolean activeCard) {
+        if (activeCard != null && !activeCard) {
+            violations.add("card-not-active");
         }
     }
 }

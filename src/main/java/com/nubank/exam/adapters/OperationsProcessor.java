@@ -1,7 +1,7 @@
 package com.nubank.exam.adapters;
 
-import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.domain.input.Operation;
+import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.usecases.OperationExecutor;
 import java.io.FileNotFoundException;
 import java.util.List;

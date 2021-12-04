@@ -5,10 +5,6 @@ import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.input.TransactionAuthorization;
 import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.usecases.AccountManager;
-import com.nubank.exam.usecases.exceptions.AccountNotInitializedException;
-import com.nubank.exam.usecases.exceptions.CardNotActiveException;
-import com.nubank.exam.usecases.exceptions.InsufficientLimitException;
-import com.nubank.exam.usecases.exceptions.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,11 +16,7 @@ public class TransactionAuthorizationExecution implements OperationExecution {
         TransactionAuthorization transactionAuthorization = (TransactionAuthorization) operation;
         List<String> violations = new ArrayList<>();
 
-        try {
-            accountManager.authorize(transactionAuthorization);
-        } catch (ValidationException e) {
-            violations.add(e.getMessage());
-        }
+        accountManager.authorize(transactionAuthorization, violations);
 
         Account account = new Account(accountManager.getActiveCard(), accountManager.getAvailableLimit());
 

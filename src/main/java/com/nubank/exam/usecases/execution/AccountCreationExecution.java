@@ -5,8 +5,6 @@ import com.nubank.exam.domain.input.AccountCreation;
 import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.usecases.AccountManager;
-import com.nubank.exam.usecases.exceptions.AccountAlreadyInitializedException;
-import com.nubank.exam.usecases.exceptions.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +16,7 @@ public class AccountCreationExecution implements OperationExecution {
         AccountCreation accountCreation = (AccountCreation) operation;
         List<String> violations = new ArrayList<>();
 
-        try {
-            accountManager.create(accountCreation);
-        } catch (ValidationException e) {
-           violations.add(e.getMessage());
-        }
+        accountManager.create(violations, accountCreation);
 
         Account account = new Account(accountManager.getActiveCard(), accountManager.getAvailableLimit());
 

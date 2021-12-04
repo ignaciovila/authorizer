@@ -1,11 +1,11 @@
 package com.nubank.exam.usecases.validators;
 
-import com.nubank.exam.usecases.exceptions.AccountAlreadyInitializedException;
+import java.util.List;
 
-public class AccountAlreadyInitializedValidator implements OperationValidator {
-    public void validate(Boolean activeCard, Long availableLimit, Long transactionAmount) throws AccountAlreadyInitializedException {
+public class AccountAlreadyInitializedValidator {
+    public void validate(List<String> violations, Boolean activeCard, Long availableLimit) {
         if (activeCard != null || availableLimit != null) {
-            throw new AccountAlreadyInitializedException();
+            violations.add("account-already-initialized");
         }
     }
 }

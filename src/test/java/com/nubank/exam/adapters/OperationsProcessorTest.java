@@ -41,4 +41,22 @@ class OperationsProcessorTest extends BaseTest {
         baseTest("./src/test/resources/input/process_transaction_insufficient_limit_error.json",
                 "./src/test/resources/expected/process_transaction_insufficient_limit_error_response.json");
     }
+
+    @Test
+    void processTransactionHighFrequencySmallIntervalError() throws IOException, JSONException {
+        baseTest("./src/test/resources/input/process_transaction_high_frequency_small_interval_error.json",
+                "./src/test/resources/expected/process_transaction_high_frequency_small_interval_error_response.json");
+    }
+
+    @Test
+    void processTransactionDoubledTransactionError() throws IOException, JSONException {
+        baseTest("./src/test/resources/input/process_transaction_doubled_transaction_error.json",
+                "./src/test/resources/expected/process_transaction_doubled_transaction_error_response.json");
+    }
+
+    @Test
+    void processTransactionMultipleErrors() throws IOException, JSONException {
+        baseTest("./src/test/resources/input/process_transaction_multiple_errors.json",
+                "./src/test/resources/expected/process_transaction_multiple_errors_response.json");
+    }
 }

@@ -1,13 +1,11 @@
 package com.nubank.exam.usecases.validators;
 
-import com.nubank.exam.usecases.exceptions.AccountNotInitializedException;
-import com.nubank.exam.usecases.exceptions.ValidationException;
+import java.util.List;
 
-public class AccountNotInitializedValidator implements OperationValidator {
-    @Override
-    public void validate(Boolean activeCard, Long availableLimit, Long transactionAmount) throws ValidationException {
+public class AccountNotInitializedValidator {
+    public void validate(List<String> violations, Boolean activeCard, Long availableLimit) {
         if (activeCard == null || availableLimit == null) {
-            throw new AccountNotInitializedException();
+            violations.add("account-not-initialized");
         }
     }
 }
