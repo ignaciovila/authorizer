@@ -1,4 +1,4 @@
-#How to run the application
+# How to run the application
 
 ### Build the application
 ```./gradlew build```
