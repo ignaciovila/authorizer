@@ -13,9 +13,16 @@ public class OperationsFileParser {
     private final List<String> operations = new ArrayList<>();
     private final OperationMapper operationMapper = new OperationMapper();
 
-    public List<Operation> parse(String fileName) throws FileNotFoundException {
+    public List<Operation> parse(String fileName) {
         File file = new File(fileName);
-        Scanner scanner = new Scanner(file);
+        Scanner scanner;
+
+        try {
+             scanner = new Scanner(file);
+        } catch (FileNotFoundException exception) {
+            throw new RuntimeException("File not found");
+        }
+
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
             operations.add(data);
