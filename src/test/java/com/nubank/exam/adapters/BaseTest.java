@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import org.json.JSONException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.skyscreamer.jsonassert.JSONCompareMode;
 
 public abstract class BaseTest {
 
@@ -21,7 +19,7 @@ public abstract class BaseTest {
         operationsProcessor = new OperationsProcessor();
     }
 
-    void baseTest(String inputRoute, String expectedRoute) throws IOException, JSONException {
+    void baseTest(String inputRoute, String expectedRoute) throws IOException {
         List<AccountStatus> actualList = operationsProcessor.process(inputRoute);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -35,11 +33,6 @@ public abstract class BaseTest {
             expectedList.add(accountStatus);
         }
 
-        for (int i = 0; i < expectedList.size(); i++) {
-            String expected = objectMapper.writeValueAsString(expectedList.get(i));
-            String actual = objectMapper.writeValueAsString(actualList.get(i));
-
-            JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
-        }
+        Assertions.assertEquals(expectedList, actualList);
     }
 }
