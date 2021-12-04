@@ -11,6 +11,6 @@ public abstract class DateValidator {
         calendar.setTime(transaction.getTime());
         calendar.add(Calendar.MINUTE, -2);
 
-        transactionHistory.removeIf(t -> t.getTime().compareTo(calendar.getTime()) < 0);
+        transactionHistory.removeIf(t -> t.getTime().before(calendar.getTime()));
     }
 }
