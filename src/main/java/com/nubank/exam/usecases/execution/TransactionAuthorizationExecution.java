@@ -17,7 +17,7 @@ public class TransactionAuthorizationExecution implements OperationExecution {
         TransactionAuthorization transactionAuthorization = (TransactionAuthorization) operation;
         List<Violations> violations = new ArrayList<>();
 
-        Account account = accountManager.authorizeTransaction(transactionAuthorization, violations);
+        Account account = accountManager.authorizeTransaction(transactionAuthorization.getTransaction(), violations);
 
         AccountStatus accountStatus = new AccountStatus(account, violations);
 

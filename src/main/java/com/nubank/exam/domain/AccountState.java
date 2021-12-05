@@ -14,4 +14,24 @@ public class AccountState {
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
+
+    public boolean isInitialized() {
+        return activeCard != null && availableLimit != null;
+    }
+
+    public boolean isNotInitialized() {
+        return activeCard == null || availableLimit == null;
+    }
+
+    public boolean isInactiveCard() {
+        return activeCard != null && !activeCard;
+    }
+
+    public boolean isInsufficientLimitTransaction(Transaction transaction) {
+        if (transaction == null || availableLimit == null) {
+            return false;
+        }
+
+        return transaction.getAmount() > availableLimit;
+    }
 }

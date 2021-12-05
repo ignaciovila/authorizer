@@ -1,9 +1,28 @@
 package com.nubank.exam.adapters;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nubank.exam.Main;
+import com.nubank.exam.domain.output.AccountStatus;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-class OperationsProcessorTest extends BaseTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Main.class, args = "src/test/resources/test-operations")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+class OperationsProcessorTest {
+
+    @Autowired
+    OperationsProcessor operationsProcessor;
 
     @Test
     void accountCreationSuccess() throws IOException {
@@ -57,5 +76,22 @@ class OperationsProcessorTest extends BaseTest {
     void processTransactionMultipleErrors() throws IOException {
         baseTest("./src/test/resources/input/process_transaction_multiple_errors.json",
                 "./src/test/resources/expected/process_transaction_multiple_errors_response.json");
+    }
+
+    private void baseTest(String inputRoute, String expectedRoute) throws IOException {
+        List<AccountStatus> actualList = operationsProcessor.process(inputRoute);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File(expectedRoute);
+        Scanner scanner = new Scanner(file);
+        List<AccountStatus> expectedList = new ArrayList<>();
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            AccountStatus accountStatus = objectMapper.readValue(line, AccountStatus.class);
+            expectedList.add(accountStatus);
+        }
+
+        Assertions.assertEquals(expectedList, actualList);
     }
 }

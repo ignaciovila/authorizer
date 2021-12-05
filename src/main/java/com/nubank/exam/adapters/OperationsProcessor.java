@@ -4,11 +4,13 @@ import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.output.AccountStatus;
 import com.nubank.exam.usecases.OperationExecutor;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class OperationsProcessor {
 
-    private final OperationsFileParser operationsFileParser = new OperationsFileParser();
-    private final OperationExecutor operationExecutor = new OperationExecutor();
+    private final OperationsFileParser operationsFileParser;
+    private final OperationExecutor operationExecutor;
 
     public List<AccountStatus> process(String fileName) {
         List<Operation> operations = operationsFileParser.parse(fileName);

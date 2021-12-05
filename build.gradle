@@ -1,8 +1,18 @@
-plugins {
-    id "application"
+buildscript {
+    ext {
+        springBootVersion = '2.2.9.RELEASE'
+    }
 }
 
-apply plugin : "java"
+plugins {
+    id "java"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
 
 group 'org.nubank'
 version '1.0-SNAPSHOT'
@@ -11,22 +21,16 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
 test {
     useJUnitPlatform()
 }
 
-ext {
-    javaMainClass = "com.nubank.exam.Main"
-}
-
-application {
-    mainClassName = javaMainClass
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.2.9.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.2.9.RELEASE'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.9.RELEASE'
 }
