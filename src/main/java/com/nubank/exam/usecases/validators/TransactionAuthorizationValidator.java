@@ -15,8 +15,6 @@ import lombok.Builder;
 public class TransactionAuthorizationValidator {
     
     private List<Violations> violations;
-    private Boolean activeCard;
-    private Long availableLimit;
     private Transaction transaction;
     private AccountState accountState;
     
@@ -27,9 +25,9 @@ public class TransactionAuthorizationValidator {
     private final DoubledTransactionValidator doubledTransactionValidator = new DoubledTransactionValidator();
 
     public void validate() {
-        accountNotInitializedValidator.validate(violations, activeCard, availableLimit);
-        cardNotActiveValidator.validate(violations, activeCard);
-        insufficientLimitValidator.validate(violations, availableLimit, transaction);
+        accountNotInitializedValidator.validate(violations, accountState.getActiveCard(), accountState.getAvailableLimit());
+        cardNotActiveValidator.validate(violations, accountState.getActiveCard());
+        insufficientLimitValidator.validate(violations, accountState.getAvailableLimit(), transaction);
         highFrequencySmallIntervalValidator.validate(violations, transaction, accountState);
         doubledTransactionValidator.validate(violations, transaction, accountState);
     }

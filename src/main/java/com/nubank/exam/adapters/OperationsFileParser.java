@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 public class OperationsFileParser {
 
-    private final List<String> operations = new ArrayList<>();
     private final OperationMapper operationMapper = new OperationMapper();
 
     public List<Operation> parse(String fileName) {
+        List<String> operations = new ArrayList<>();
         File file = new File(fileName);
         Scanner scanner;
 

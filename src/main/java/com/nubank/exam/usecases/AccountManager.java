@@ -16,8 +16,7 @@ public class AccountManager {
     public Account createAccount(AccountCreation accountCreation, List<Violations> violations) {
         AccountCreationValidator validator = AccountCreationValidator.builder()
                         .violations(violations)
-                        .activeCard(accountState.getActiveCard())
-                        .availableLimit(accountState.getAvailableLimit())
+                        .accountState(accountState)
                         .build();
 
         validator.validate();
@@ -33,8 +32,6 @@ public class AccountManager {
     public Account authorizeTransaction(TransactionAuthorization transactionAuthorization, List<Violations> violations) {
         TransactionAuthorizationValidator validator = TransactionAuthorizationValidator.builder()
                .violations(violations)
-               .activeCard(accountState.getActiveCard())
-               .availableLimit(accountState.getAvailableLimit())
                .transaction(transactionAuthorization.getTransaction())
                .accountState(accountState)
                .build();
