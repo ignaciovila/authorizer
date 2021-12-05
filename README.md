@@ -5,4 +5,4 @@
 
 ### Run the application with the name of the input file as argument
 
-```./gradlew run --quiet --args=operations```
+```./gradlew bootRun --quiet --args=operations```
