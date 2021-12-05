@@ -7,11 +7,11 @@ import com.nubank.exam.usecases.validators.transactions.util.ValidatorDateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HighFrequencySmallIntervalValidator {
+public class HighFrequencySmallIntervalValidator implements TransactionValidator {
 
     private final ValidatorDateUtil validatorDateUtil = new ValidatorDateUtil();
 
-    public void validate(List<Violations> violations, Transaction transaction, AccountState accountState) {
+    public void validate(List<Violations> violations, AccountState accountState, Transaction transaction) {
         List<Transaction> lastTransactions = new ArrayList<>(accountState.getTransactions());
         validatorDateUtil.filterLastTwoMinutesTransactions(transaction, lastTransactions);
 

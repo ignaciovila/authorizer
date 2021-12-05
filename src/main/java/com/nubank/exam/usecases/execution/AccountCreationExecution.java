@@ -17,7 +17,7 @@ public class AccountCreationExecution implements OperationExecution {
         AccountCreation accountCreation = (AccountCreation) operation;
         List<Violations> violations = new ArrayList<>();
 
-        Account account = accountManager.createAccount(accountCreation, violations);
+        Account account = accountManager.createAccount(accountCreation.getAccount(), violations);
 
         AccountStatus accountStatus = new AccountStatus(account, violations);
 
