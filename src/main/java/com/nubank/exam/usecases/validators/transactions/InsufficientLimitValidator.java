@@ -7,7 +7,7 @@ import java.util.List;
 
 public class InsufficientLimitValidator implements TransactionValidator {
     public void validate(List<Violations> violations, AccountState accountState, Transaction transaction) {
-        if (accountState.isInsufficientLimitTransaction(transaction)) {
+        if (accountState.isInvalidTransaction(transaction)) {
             violations.add(Violations.INSUFFICIENT_LIMIT);
         }
     }

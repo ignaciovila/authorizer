@@ -27,7 +27,7 @@ public class AccountState {
         return activeCard != null && !activeCard;
     }
 
-    public boolean isInsufficientLimitTransaction(Transaction transaction) {
+    public boolean isInvalidTransaction(Transaction transaction) {
         if (transaction == null || availableLimit == null) {
             return false;
         }
