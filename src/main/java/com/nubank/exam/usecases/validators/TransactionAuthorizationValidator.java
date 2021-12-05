@@ -9,27 +9,21 @@ import com.nubank.exam.usecases.validators.transactions.DoubledTransactionValida
 import com.nubank.exam.usecases.validators.transactions.HighFrequencySmallIntervalValidator;
 import com.nubank.exam.usecases.validators.transactions.InsufficientLimitValidator;
 import java.util.List;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
-@Builder
+@AllArgsConstructor
 public class TransactionAuthorizationValidator {
     
-    private List<Violations> violations;
-    private Boolean activeCard;
-    private Long availableLimit;
-    private Transaction transaction;
-    private AccountState accountState;
-    
-    private final AccountNotInitializedValidator accountNotInitializedValidator = new AccountNotInitializedValidator();
-    private final CardNotActiveValidator cardNotActiveValidator = new CardNotActiveValidator();
-    private final InsufficientLimitValidator insufficientLimitValidator = new InsufficientLimitValidator();
-    private final HighFrequencySmallIntervalValidator highFrequencySmallIntervalValidator = new HighFrequencySmallIntervalValidator();
-    private final DoubledTransactionValidator doubledTransactionValidator = new DoubledTransactionValidator();
+    private final AccountNotInitializedValidator accountNotInitializedValidator;
+    private final CardNotActiveValidator cardNotActiveValidator;
+    private final InsufficientLimitValidator insufficientLimitValidator;
+    private final HighFrequencySmallIntervalValidator highFrequencySmallIntervalValidator;
+    private final DoubledTransactionValidator doubledTransactionValidator;
 
-    public void validate() {
-        accountNotInitializedValidator.validate(violations, activeCard, availableLimit);
-        cardNotActiveValidator.validate(violations, activeCard);
-        insufficientLimitValidator.validate(violations, availableLimit, transaction);
+    public void validate(List<Violations> violations, Transaction transaction, AccountState accountState) {
+        accountNotInitializedValidator.validate(violations, accountState.getActiveCard(), accountState.getAvailableLimit());
+        cardNotActiveValidator.validate(violations, accountState.getActiveCard());
+        insufficientLimitValidator.validate(violations, accountState.getAvailableLimit(), transaction);
         highFrequencySmallIntervalValidator.validate(violations, transaction, accountState);
         doubledTransactionValidator.validate(violations, transaction, accountState);
     }

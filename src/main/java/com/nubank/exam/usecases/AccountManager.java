@@ -8,19 +8,17 @@ import com.nubank.exam.domain.input.TransactionAuthorization;
 import com.nubank.exam.usecases.validators.AccountCreationValidator;
 import com.nubank.exam.usecases.validators.TransactionAuthorizationValidator;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class AccountManager {
 
+    private final AccountCreationValidator accountCreationValidator;
+    private final TransactionAuthorizationValidator transactionAuthorizationValidator;
     private final AccountState accountState = new AccountState();
 
     public Account createAccount(AccountCreation accountCreation, List<Violations> violations) {
-        AccountCreationValidator validator = AccountCreationValidator.builder()
-                        .violations(violations)
-                        .activeCard(accountState.getActiveCard())
-                        .availableLimit(accountState.getAvailableLimit())
-                        .build();
-
-        validator.validate();
+        accountCreationValidator.validate(violations, accountState.getActiveCard(), accountState.getAvailableLimit());
 
         if (violations.isEmpty()) {
             accountState.setActiveCard(accountCreation.getAccount().getActiveCard());
@@ -31,15 +29,7 @@ public class AccountManager {
     }
 
     public Account authorizeTransaction(TransactionAuthorization transactionAuthorization, List<Violations> violations) {
-        TransactionAuthorizationValidator validator = TransactionAuthorizationValidator.builder()
-               .violations(violations)
-               .activeCard(accountState.getActiveCard())
-               .availableLimit(accountState.getAvailableLimit())
-               .transaction(transactionAuthorization.getTransaction())
-               .accountState(accountState)
-               .build();
-
-        validator.validate();
+        transactionAuthorizationValidator.validate(violations, transactionAuthorization.getTransaction(), accountState);
 
         if (violations.isEmpty()) {
             accountState.setAvailableLimit(accountState.getAvailableLimit() - transactionAuthorization.getTransaction().getAmount());

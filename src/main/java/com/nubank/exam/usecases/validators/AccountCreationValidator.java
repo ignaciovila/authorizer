@@ -3,17 +3,14 @@ package com.nubank.exam.usecases.validators;
 import com.nubank.exam.domain.Violations;
 import com.nubank.exam.usecases.validators.account.AccountAlreadyInitializedValidator;
 import java.util.List;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
-@Builder
+@AllArgsConstructor
 public class AccountCreationValidator {
-    private List<Violations> violations;
-    private Boolean activeCard;
-    private Long availableLimit;
 
-    private final AccountAlreadyInitializedValidator accountAlreadyInitializedValidator = new AccountAlreadyInitializedValidator();
+    private final AccountAlreadyInitializedValidator accountAlreadyInitializedValidator;
 
-    public void validate() {
+    public void validate(List<Violations> violations, Boolean activeCard, Long availableLimit) {
         accountAlreadyInitializedValidator.validate(violations, activeCard, availableLimit);
     }
 }

@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class OperationsFileParser {
 
-    private final List<String> operations = new ArrayList<>();
-    private final OperationMapper operationMapper = new OperationMapper();
+    private final OperationMapper operationMapper;
 
     public List<Operation> parse(String fileName) {
+        List<String> operations = new ArrayList<>();
         File file = new File(fileName);
         Scanner scanner;
 
