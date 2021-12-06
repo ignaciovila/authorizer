@@ -22,6 +22,7 @@ public class OperationsResolver {
         // execute use case
         List<AccountStatus> output = executeOperationUseCase.run(operations);
 
+        // return the output
         return accountStatusPresenter.present(output);
     }
 }
