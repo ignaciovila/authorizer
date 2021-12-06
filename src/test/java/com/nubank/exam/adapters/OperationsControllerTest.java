@@ -1,7 +1,8 @@
 package com.nubank.exam.adapters;
 
 import com.nubank.exam.Main;
-import com.nubank.exam.domain.OperationsOutput;
+import com.nubank.exam.adapters.controllers.OperationsController;
+import com.nubank.exam.domain.output.OperationsOutput;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.nubank.exam.usecases.validators.transactions.util;
 
-import com.nubank.exam.domain.input.Transaction;
+import com.nubank.exam.domain.entities.input.transaction.Transaction;
 import java.util.Calendar;
 import java.util.List;
 

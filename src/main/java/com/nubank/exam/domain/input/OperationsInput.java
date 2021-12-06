@@ -1,4 +1,4 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.input;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

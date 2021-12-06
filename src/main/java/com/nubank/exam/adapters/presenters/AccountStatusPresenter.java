@@ -1,7 +1,8 @@
-package com.nubank.exam.adapters;
+package com.nubank.exam.adapters.presenters;
 
-import com.nubank.exam.domain.OperationsOutput;
-import com.nubank.exam.domain.output.AccountStatus;
+import com.nubank.exam.adapters.mappers.AccountStatusMapper;
+import com.nubank.exam.domain.entities.output.AccountStatus;
+import com.nubank.exam.domain.output.OperationsOutput;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;

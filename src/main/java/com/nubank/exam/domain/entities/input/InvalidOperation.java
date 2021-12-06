@@ -1,6 +1,6 @@
-package com.nubank.exam.domain.input;
+package com.nubank.exam.domain.entities.input;
 
-import com.nubank.exam.domain.OperationType;
+import com.nubank.exam.domain.enums.OperationType;
 
 public class InvalidOperation implements Operation {
     @Override

@@ -1,8 +1,8 @@
-package com.nubank.exam.adapters;
+package com.nubank.exam.adapters.mappers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nubank.exam.domain.output.AccountStatus;
+import com.nubank.exam.domain.entities.output.AccountStatus;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

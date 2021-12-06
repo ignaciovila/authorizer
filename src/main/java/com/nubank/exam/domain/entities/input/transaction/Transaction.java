@@ -1,4 +1,4 @@
-package com.nubank.exam.domain.input;
+package com.nubank.exam.domain.entities.input.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;

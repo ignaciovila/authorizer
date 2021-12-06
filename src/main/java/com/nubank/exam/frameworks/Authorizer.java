@@ -1,7 +1,7 @@
 package com.nubank.exam.frameworks;
 
-import com.nubank.exam.adapters.OperationsController;
-import com.nubank.exam.domain.OperationsOutput;
+import com.nubank.exam.adapters.controllers.OperationsController;
+import com.nubank.exam.domain.output.OperationsOutput;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 

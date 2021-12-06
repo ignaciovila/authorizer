@@ -1,8 +1,8 @@
-package com.nubank.exam.domain.output;
+package com.nubank.exam.domain.entities.output;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nubank.exam.domain.Account;
-import com.nubank.exam.domain.Violations;
+import com.nubank.exam.domain.entities.input.account.Account;
+import com.nubank.exam.domain.enums.Violations;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;

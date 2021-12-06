@@ -1,10 +1,10 @@
-package com.nubank.exam.adapters;
+package com.nubank.exam.adapters.mappers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nubank.exam.domain.input.AccountCreation;
-import com.nubank.exam.domain.input.InvalidOperation;
-import com.nubank.exam.domain.input.Operation;
-import com.nubank.exam.domain.input.TransactionAuthorization;
+import com.nubank.exam.domain.entities.input.InvalidOperation;
+import com.nubank.exam.domain.entities.input.Operation;
+import com.nubank.exam.domain.entities.input.account.AccountCreation;
+import com.nubank.exam.domain.entities.input.transaction.TransactionAuthorization;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

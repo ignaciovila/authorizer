@@ -1,4 +1,4 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.enums;
 
 public enum OperationType {
     ACCOUNT_CREATION,

@@ -1,6 +1,6 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.entities.state;
 
-import com.nubank.exam.domain.input.Transaction;
+import com.nubank.exam.domain.entities.input.transaction.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;

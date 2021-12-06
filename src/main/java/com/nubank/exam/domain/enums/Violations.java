@@ -1,4 +1,4 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.enums;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;

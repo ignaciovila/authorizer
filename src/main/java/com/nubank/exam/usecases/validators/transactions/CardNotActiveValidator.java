@@ -1,8 +1,8 @@
 package com.nubank.exam.usecases.validators.transactions;
 
-import com.nubank.exam.domain.AccountState;
-import com.nubank.exam.domain.Violations;
-import com.nubank.exam.domain.input.Transaction;
+import com.nubank.exam.domain.entities.state.AccountState;
+import com.nubank.exam.domain.entities.input.transaction.Transaction;
+import com.nubank.exam.domain.enums.Violations;
 import java.util.List;
 
 public class CardNotActiveValidator implements TransactionValidator {

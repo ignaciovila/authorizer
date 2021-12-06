@@ -1,7 +1,7 @@
-package com.nubank.exam.adapters;
+package com.nubank.exam.adapters.mappers;
 
-import com.nubank.exam.domain.OperationsInput;
-import com.nubank.exam.domain.input.Operation;
+import com.nubank.exam.domain.entities.input.Operation;
+import com.nubank.exam.domain.input.OperationsInput;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

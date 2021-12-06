@@ -1,7 +1,7 @@
 package com.nubank.exam.usecases.validators.account;
 
-import com.nubank.exam.domain.AccountState;
-import com.nubank.exam.domain.Violations;
+import com.nubank.exam.domain.entities.state.AccountState;
+import com.nubank.exam.domain.enums.Violations;
 import java.util.List;
 
 public class AccountAlreadyInitializedValidator {

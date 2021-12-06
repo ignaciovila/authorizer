@@ -1,4 +1,4 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.output;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

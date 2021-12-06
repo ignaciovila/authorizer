@@ -1,12 +1,12 @@
 package com.nubank.exam.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nubank.exam.adapters.AccountStatusMapper;
-import com.nubank.exam.adapters.AccountStatusPresenter;
-import com.nubank.exam.adapters.OperationMapper;
-import com.nubank.exam.adapters.OperationsController;
-import com.nubank.exam.adapters.OperationsFileParser;
-import com.nubank.exam.adapters.OperationsResolver;
+import com.nubank.exam.adapters.controllers.OperationsController;
+import com.nubank.exam.adapters.mappers.AccountStatusMapper;
+import com.nubank.exam.adapters.mappers.OperationMapper;
+import com.nubank.exam.adapters.mappers.OperationsFileParser;
+import com.nubank.exam.adapters.presenters.AccountStatusPresenter;
+import com.nubank.exam.adapters.resolvers.OperationsResolver;
 import com.nubank.exam.frameworks.Authorizer;
 import com.nubank.exam.usecases.AccountManager;
 import com.nubank.exam.usecases.ExecuteOperationUseCase;

@@ -1,9 +1,9 @@
 package com.nubank.exam.usecases;
 
-import com.nubank.exam.domain.Account;
-import com.nubank.exam.domain.AccountState;
-import com.nubank.exam.domain.Violations;
-import com.nubank.exam.domain.input.Transaction;
+import com.nubank.exam.domain.entities.state.AccountState;
+import com.nubank.exam.domain.entities.input.account.Account;
+import com.nubank.exam.domain.entities.input.transaction.Transaction;
+import com.nubank.exam.domain.enums.Violations;
 import com.nubank.exam.usecases.validators.AccountCreationValidator;
 import com.nubank.exam.usecases.validators.TransactionAuthorizationValidator;
 import java.util.List;

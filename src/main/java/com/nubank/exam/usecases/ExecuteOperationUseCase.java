@@ -1,8 +1,8 @@
 package com.nubank.exam.usecases;
 
-import com.nubank.exam.domain.OperationType;
-import com.nubank.exam.domain.input.Operation;
-import com.nubank.exam.domain.output.AccountStatus;
+import com.nubank.exam.domain.entities.input.Operation;
+import com.nubank.exam.domain.entities.output.AccountStatus;
+import com.nubank.exam.domain.enums.OperationType;
 import com.nubank.exam.usecases.execution.AccountCreationExecution;
 import com.nubank.exam.usecases.execution.InvalidOperationExecution;
 import com.nubank.exam.usecases.execution.OperationExecution;

@@ -1,4 +1,4 @@
-package com.nubank.exam.domain;
+package com.nubank.exam.domain.entities.input.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
