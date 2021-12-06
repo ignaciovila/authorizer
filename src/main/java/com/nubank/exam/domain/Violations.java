@@ -2,9 +2,7 @@ package com.nubank.exam.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
 public enum Violations {
     ACCOUNT_ALREADY_INITIALIZED("account-already-initialized"),
@@ -15,5 +13,5 @@ public enum Violations {
     INSUFFICIENT_LIMIT("insufficient-limit");
 
     @JsonValue
-    private String description;
+    private String message;
 }
