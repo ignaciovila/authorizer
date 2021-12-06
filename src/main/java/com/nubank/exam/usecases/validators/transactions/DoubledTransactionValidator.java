@@ -6,10 +6,12 @@ import com.nubank.exam.domain.input.Transaction;
 import com.nubank.exam.usecases.validators.transactions.util.ValidatorDateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class DoubledTransactionValidator implements TransactionValidator {
 
-    private final ValidatorDateUtil validatorDateUtil = new ValidatorDateUtil();
+    private final ValidatorDateUtil validatorDateUtil;
 
     public void validate(List<Violations> violations, AccountState accountState, Transaction transaction) {
         List<Transaction> lastTransactions = new ArrayList<>(accountState.getTransactions());

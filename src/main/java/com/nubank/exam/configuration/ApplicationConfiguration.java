@@ -17,6 +17,7 @@ import com.nubank.exam.usecases.validators.transactions.CardNotActiveValidator;
 import com.nubank.exam.usecases.validators.transactions.DoubledTransactionValidator;
 import com.nubank.exam.usecases.validators.transactions.HighFrequencySmallIntervalValidator;
 import com.nubank.exam.usecases.validators.transactions.InsufficientLimitValidator;
+import com.nubank.exam.usecases.validators.transactions.util.ValidatorDateUtil;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -108,12 +109,17 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public HighFrequencySmallIntervalValidator highFrequencySmallIntervalValidator() {
-        return new HighFrequencySmallIntervalValidator();
+    public HighFrequencySmallIntervalValidator highFrequencySmallIntervalValidator(ValidatorDateUtil validatorDateUtil) {
+        return new HighFrequencySmallIntervalValidator(validatorDateUtil);
     }
 
     @Bean
-    public DoubledTransactionValidator doubledTransactionValidator() {
-        return new DoubledTransactionValidator();
+    public DoubledTransactionValidator doubledTransactionValidator(ValidatorDateUtil validatorDateUtil) {
+        return new DoubledTransactionValidator(validatorDateUtil);
+    }
+
+    @Bean
+    public ValidatorDateUtil validatorDateUtil() {
+        return new ValidatorDateUtil();
     }
 }
