@@ -3,11 +3,12 @@ package com.nubank.exam.configuration;
 import com.nubank.exam.adapters.AccountStatusMapper;
 import com.nubank.exam.adapters.AccountStatusPresenter;
 import com.nubank.exam.adapters.OperationMapper;
+import com.nubank.exam.adapters.OperationsController;
 import com.nubank.exam.adapters.OperationsFileParser;
-import com.nubank.exam.adapters.OperationsProcessor;
+import com.nubank.exam.adapters.OperationsResolver;
 import com.nubank.exam.frameworks.Authorizer;
 import com.nubank.exam.usecases.AccountManager;
-import com.nubank.exam.usecases.OperationExecutor;
+import com.nubank.exam.usecases.ExecuteOperationUseCase;
 import com.nubank.exam.usecases.validators.AccountCreationValidator;
 import com.nubank.exam.usecases.validators.TransactionAuthorizationValidator;
 import com.nubank.exam.usecases.validators.account.AccountAlreadyInitializedValidator;
@@ -23,18 +24,23 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationConfiguration {
     @Bean
-    public Authorizer authorizer(OperationsProcessor operationsProcessor, AccountStatusPresenter accountStatusPresenter) {
-        return new Authorizer(operationsProcessor, accountStatusPresenter);
+    public Authorizer authorizer(OperationsController operationsController) {
+        return new Authorizer(operationsController);
     }
 
     @Bean
-    public OperationsProcessor operationsProcessor(OperationsFileParser operationsFileParser, OperationExecutor operationExecutor) {
-        return new OperationsProcessor(operationsFileParser, operationExecutor);
+    public OperationsController operationsProcessor(OperationsResolver operationsResolver) {
+        return new OperationsController(operationsResolver);
     }
 
     @Bean
-    public OperationsFileParser operationsFileParser(OperationMapper operationMapper) {
-        return new OperationsFileParser(operationMapper);
+    public OperationsResolver operationsResolver(OperationsFileParser operationsFileParser, ExecuteOperationUseCase executeOperationUseCase, AccountStatusPresenter accountStatusPresenter) {
+        return new OperationsResolver(operationsFileParser, executeOperationUseCase, accountStatusPresenter);
+    }
+
+    @Bean
+    public OperationsFileParser operationsFileParser() {
+        return new OperationsFileParser(operationMapper());
     }
 
     @Bean
@@ -53,8 +59,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public OperationExecutor operationExecutor(AccountManager accountManager) {
-        return new OperationExecutor(accountManager);
+    public ExecuteOperationUseCase executeOperationUseCase(AccountManager accountManager) {
+        return new ExecuteOperationUseCase(accountManager);
     }
 
     @Bean

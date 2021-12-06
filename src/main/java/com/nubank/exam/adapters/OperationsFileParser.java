@@ -1,5 +1,6 @@
 package com.nubank.exam.adapters;
 
+import com.nubank.exam.domain.OperationsInput;
 import com.nubank.exam.domain.input.Operation;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,11 +13,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class OperationsFileParser {
 
-    private final OperationMapper operationMapper;
+    private OperationMapper operationMapper;
 
-    public List<Operation> parse(String fileName) {
+    public List<Operation> parse(OperationsInput input) {
         List<String> operations = new ArrayList<>();
-        File file = new File(fileName);
+        File file = new File(input.getFileName());
         Scanner scanner;
 
         try {

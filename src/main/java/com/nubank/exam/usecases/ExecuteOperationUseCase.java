@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class OperationExecutor {
+public class ExecuteOperationUseCase {
 
     private final AccountManager accountManager;
 
@@ -24,14 +24,14 @@ public class OperationExecutor {
             OperationType.INVALID_OPERATION, new InvalidOperationExecution()
     );
 
-    public List<AccountStatus> execute(List<Operation> operations) {
+    public List<AccountStatus> run(List<Operation> operations) {
         return operations.stream()
-                .map(this::execute)
+                .map(this::run)
                 .flatMap(Optional::stream)
                 .collect(Collectors.toList());
     }
 
-    private Optional<AccountStatus> execute(Operation operation) {
+    private Optional<AccountStatus> run(Operation operation) {
         OperationExecution execution = operationExecutionMap.getOrDefault(operation.getType(), new InvalidOperationExecution());
 
         return execution.execute(accountManager, operation);
