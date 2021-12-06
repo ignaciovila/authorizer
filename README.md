@@ -1,5 +1,8 @@
 # How to run the application
 
+### Requirements
+- Java Development Kit (JDK) version 11
+
 ### Build the application
 ```./gradlew build```
 
