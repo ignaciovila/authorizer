@@ -5,10 +5,12 @@ import com.nubank.exam.domain.input.AccountCreation;
 import com.nubank.exam.domain.input.InvalidOperation;
 import com.nubank.exam.domain.input.Operation;
 import com.nubank.exam.domain.input.TransactionAuthorization;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class OperationMapper {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public Operation map(String operation) {
         Exception accountCreationMappingException;

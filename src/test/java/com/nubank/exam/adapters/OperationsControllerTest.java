@@ -83,7 +83,6 @@ class OperationsControllerTest {
     private void baseTest(String inputRoute, String expectedRoute) throws IOException, JSONException {
         OperationsOutput output = operationsController.process(inputRoute);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(expectedRoute);
         Scanner scanner = new Scanner(file);
         List<String> expectedList = new ArrayList<>();

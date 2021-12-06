@@ -1,5 +1,6 @@
 package com.nubank.exam.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nubank.exam.adapters.AccountStatusMapper;
 import com.nubank.exam.adapters.AccountStatusPresenter;
 import com.nubank.exam.adapters.OperationMapper;
@@ -40,13 +41,13 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public OperationsFileParser operationsFileParser() {
-        return new OperationsFileParser(operationMapper());
+    public OperationsFileParser operationsFileParser(OperationMapper operationMapper) {
+        return new OperationsFileParser(operationMapper);
     }
 
     @Bean
-    public OperationMapper operationMapper() {
-        return new OperationMapper();
+    public OperationMapper operationMapper(ObjectMapper objectMapper) {
+        return new OperationMapper(objectMapper);
     }
 
     @Bean
@@ -55,8 +56,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public AccountStatusMapper accountStatusMapper() {
-        return new AccountStatusMapper();
+    public AccountStatusMapper accountStatusMapper(ObjectMapper objectMapper) {
+        return new AccountStatusMapper(objectMapper);
     }
 
     @Bean
@@ -121,5 +122,10 @@ public class ApplicationConfiguration {
     @Bean
     public ValidatorDateUtil validatorDateUtil() {
         return new ValidatorDateUtil();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

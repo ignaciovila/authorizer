@@ -3,10 +3,12 @@ package com.nubank.exam.adapters;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nubank.exam.domain.output.AccountStatus;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class AccountStatusMapper {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public String map(AccountStatus accountStatus) {
         String output;
