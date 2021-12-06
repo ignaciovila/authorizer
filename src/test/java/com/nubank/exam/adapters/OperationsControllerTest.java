@@ -1,6 +1,5 @@
 package com.nubank.exam.adapters;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nubank.exam.Main;
 import com.nubank.exam.domain.OperationsOutput;
 import java.io.File;
